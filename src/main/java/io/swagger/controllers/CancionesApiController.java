@@ -26,7 +26,6 @@ import io.swagger.model.CancionInput;
 import io.swagger.model.CancionPut;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Null;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
@@ -52,29 +51,52 @@ public class CancionesApiController implements CancionesApi {
 
     @GetMapping("/canciones/album/{idAlbum}")
     public ResponseEntity<List<Cancion>> cancionesAlbumIdAlbumGet(@Parameter(in = ParameterIn.PATH, description = "ID del álbum cuyas canciones se desean consultar", required=true, schema=@Schema()) @PathVariable("idAlbum") Integer idAlbum) {
-        // todo: implementar método
-        return null;
+        List<Cancion> canciones = cancionService.getAll()
+                .stream()
+                .filter(c -> c.getIdAlbum() != null && c.getIdAlbum().equals(idAlbum))
+                .collect(Collectors.toList());
+
+        if (canciones.isEmpty())
+            return ResponseEntity.noContent().build();
+
+        return ResponseEntity.ok(canciones);
     }
 
     @GetMapping("/canciones/artista/{idArtista}")
     public ResponseEntity<List<Cancion>> cancionesArtistaIdArtistaGet(@Parameter(in = ParameterIn.PATH, description = "ID del artista cuyas canciones se desean consultar", required=true, schema=@Schema()) @PathVariable("idArtista") Integer idArtista) {
-       // todo: implementar método
-        return null;
+        List<Cancion> canciones = cancionService.getAll()
+                .stream()
+                .filter(c -> c.getArtista() != null && c.getArtista().getId().equals(idArtista))
+                .collect(Collectors.toList());
+
+        if (canciones.isEmpty())
+            return ResponseEntity.noContent().build();
+
+        return ResponseEntity.ok(canciones);
     }
 
     @GetMapping("/canciones/genero/{idGenero}")
     public ResponseEntity<List<Cancion>> cancionesGeneroIdGeneroGet(@Parameter(in = ParameterIn.PATH, description = "ID del género cuyas canciones se desean consultar", required=true, schema=@Schema()) @PathVariable("idGenero") Integer idGenero) {
-       // todo: implementar método
-        return null;
-    }
+       List<Cancion> canciones = cancionService.getAll()
+                .stream()
+                .filter(c -> c.getGenero() != null && c.getGenero().getId().equals(idGenero))
+                .collect(Collectors.toList());
+
+        if (canciones.isEmpty())
+            return ResponseEntity.noContent().build();
+
+        return ResponseEntity.ok(canciones);
         
+    }
 
     @Override
     public ResponseEntity<List<Cancion>> cancionesGet(@Parameter(in = ParameterIn.QUERY, description = "ID del álbum al que pertenece la canción" ,schema=@Schema()) @Valid @RequestParam(value = "idAlbum", required = false) Integer idAlbum
             ,@Parameter(in = ParameterIn.QUERY, description = "Nombre de la canción" ,schema=@Schema()) @Valid @RequestParam(value = "nombre", required = false) String nombre) {
-       // todo: implementar método
-        return null;
-    
+        List<Cancion> canciones = cancionService.getAll();
+        if (canciones.isEmpty())
+            return ResponseEntity.noContent().build();
+
+        return ResponseEntity.ok(canciones); 
     }
 
     @Override
