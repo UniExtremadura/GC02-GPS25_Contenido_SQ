@@ -122,7 +122,37 @@ public class CancionesApiController implements CancionesApi {
 
     @Override
     public ResponseEntity<Cancion> cancionesPut(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody CancionPut body) {
-        //  todo: implementar actualización de canción
-        return null;
+        Optional<ElementoEntity> opt = elementoService.getById(body.getIdElemento());
+        if (opt.isEmpty()) return ResponseEntity.notFound().build();
+
+        Optional<CancionEntity> optCancion = cancionService.getById(body.getIdElemento());
+        if (optCancion.isEmpty()) return ResponseEntity.notFound().build();
+
+        ElementoEntity entity = opt.get();
+        CancionEntity cancionEntity = optCancion.get();
+
+        if (body.getNombre() != null) entity.setNombre(body.getNombre());
+        if (body.getDescripcion() != null) entity.setDescripcion(body.getDescripcion());
+        if (body.getPrecio() != null) entity.setPrecio(body.getPrecio());
+        if (body.isEsalbum() != null) entity.setEsalbum(body.isEsalbum());
+        if (body.isEsnovedad() != null) entity.setEsnovedad(body.isEsnovedad());
+        if (body.getValoracion() != null) entity.setValoracion(body.getValoracion());
+        if (body.getNumventas() != null) entity.setNumventas(body.getNumventas());
+        if (body.getUrlFoto() != null) entity.setUrlFoto(body.getUrlFoto());
+        if (body.getGenero() != null) entity.setGenero(body.getGenero());
+        if (body.getSubgenero() != null) entity.setSubgenero(body.getSubgenero());
+        if (body.getArtista() != null) entity.setArtista(body.getArtista());
+     
+        if (body.getNombreAudio() != null) cancionEntity.setNombreAudio(body.getNombreAudio());
+        if (body.getNumRep() != null) cancionEntity.setNumRep(body.getNumRep());
+        if (body.getIdAlbum() != null) {
+            ElementoEntity album = elementoService.getByIdOrThrow(body.getIdAlbum());
+            cancionEntity.setAlbum(album);
+        }
+
+        ElementoEntity updated = elementoService.save(entity);
+        CancionEntity updatedCancion = cancionService.save(cancionEntity);
+
+        return ResponseEntity.ok(cancionService.convertToModel(updatedCancion));
     }
 }

@@ -157,8 +157,24 @@ public class ElementosApiController implements ElementosApi {
     // PUT /elementos
     @Override
     public ResponseEntity<Elemento> elementosPut(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody ElementoPut body) {
-        //TODO
-        return null;
+        Optional<ElementoEntity> opt = elementoService.getById(body.getId());
+        if (opt.isEmpty()) return ResponseEntity.notFound().build();
+
+        ElementoEntity entity = opt.get();
+        if (body.getNombre() != null) entity.setNombre(body.getNombre());
+        if (body.getDescripcion() != null) entity.setDescripcion(body.getDescripcion());
+        if (body.getPrecio() != null) entity.setPrecio(body.getPrecio());
+        if (body.isEsalbum() != null) entity.setEsalbum(body.isEsalbum());
+        if (body.isEsnovedad() != null) entity.setEsnovedad(body.isEsnovedad());
+        if (body.getValoracion() != null) entity.setValoracion(body.getValoracion());
+        if (body.getNumventas() != null) entity.setNumventas(body.getNumventas());
+        if (body.getUrlFoto() != null) entity.setUrlFoto(body.getUrlFoto());
+        if (body.getGenero() != null) entity.setGenero(body.getGenero());
+        if (body.getSubgenero() != null) entity.setSubgenero(body.getSubgenero());
+        if (body.getArtista() != null) entity.setArtista(body.getArtista());
+
+        ElementoEntity updated = elementoService.save(entity);
+        return ResponseEntity.ok(convertToModel(updated));
          
     }
 
