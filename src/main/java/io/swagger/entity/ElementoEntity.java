@@ -4,12 +4,14 @@ import javax.persistence.*;
 
 import java.time.LocalDateTime;
 
+import java.io.Serializable;
+
 /**
  * Entidad JPA que representa la tabla ELEMENTOS en Oracle.
  */
 @Entity
 @Table(name = "ELEMENTOS")
-public class ElementoEntity {
+public class ElementoEntity implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
