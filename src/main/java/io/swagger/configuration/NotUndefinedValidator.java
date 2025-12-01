@@ -9,6 +9,7 @@ public class NotUndefinedValidator implements ConstraintValidator<NotUndefined, 
 
         @Override
         public void initialize(NotUndefined constraintAnnotation) {
+            // Este método está vacío intencionalmente porque no se requiere inicialización previa.
         }
 
         @Override
