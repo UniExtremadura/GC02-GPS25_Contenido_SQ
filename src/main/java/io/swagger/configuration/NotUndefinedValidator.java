@@ -18,7 +18,6 @@ public class NotUndefinedValidator implements ConstraintValidator<NotUndefined, 
             Field[] fields = objClass.getDeclaredFields();
             for (Field field : fields) {
                 if (field.getType().equals(JsonNullable.class)){
-                    field.setAccessible(true);
                     try {
                         Object value = field.get(addressInformation);
                         if(value.equals(JsonNullable.undefined())){
