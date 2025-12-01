@@ -111,13 +111,13 @@ public class CustomInstantDeserializer<T extends Temporal>
       }
   );
 
-  protected final Function<FromIntegerArguments, T> fromMilliseconds;
+  protected transient final Function<FromIntegerArguments, T> fromMilliseconds;
 
-  protected final Function<FromDecimalArguments, T> fromNanoseconds;
+  protected transient final Function<FromDecimalArguments, T> fromNanoseconds;
 
-  protected final Function<TemporalAccessor, T> parsedToValue;
+  protected transient final Function<TemporalAccessor, T> parsedToValue;
 
-  protected final BiFunction<T, ZoneId, T> adjust;
+  protected transient final BiFunction<T, ZoneId, T> adjust;
 
   protected CustomInstantDeserializer(Class<T> supportedType,
                     DateTimeFormatter parser,
