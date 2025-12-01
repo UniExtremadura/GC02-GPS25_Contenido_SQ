@@ -20,20 +20,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.bind.annotation.CookieValue;
 
 import javax.validation.Valid;
-import javax.validation.constraints.*;
 import java.util.List;
-import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-11-10T17:11:09.236506587Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-10-27T17:33:52.662194674Z[GMT]")
 @Validated
 public interface GenerosApi {
 
@@ -81,6 +75,25 @@ public interface GenerosApi {
 );
 
 
+    @Operation(summary = "Actualizar un género por ID", description = "Modifica los datos de un género existente.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "Generos" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "Género actualizado correctamente.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Genero.class))),
+        
+        @ApiResponse(responseCode = "401", description = "Token inválido o no autorizado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
+        
+        @ApiResponse(responseCode = "404", description = "Género no encontrado.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
+        
+        @ApiResponse(responseCode = "500", description = "Error interno del servidor", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))) })
+    @RequestMapping(value = "/generos/{idGenero}",
+        produces = { "application/json" }, 
+        consumes = { "application/json" }, 
+        method = RequestMethod.PUT)
+    ResponseEntity<Genero> generosIdGeneroPut(@Parameter(in = ParameterIn.PATH, description = "ID del género a actualizar.", required=true, schema=@Schema()) @PathVariable("idGenero") Integer idGenero
+, @Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody Genero body
+);
+
+
     @Operation(summary = "Crear un nuevo género", description = "Inserta un nuevo registro en la tabla de géneros.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "Generos" })
     @ApiResponses(value = { 
@@ -98,24 +111,6 @@ public interface GenerosApi {
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
     ResponseEntity<Genero> generosPost(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody Genero body
-);
-
-
-    @Operation(summary = "Actualizar un género por ID", description = "Modifica los datos de un género existente.", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "Generos" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Género actualizado correctamente.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Genero.class))),
-        
-        @ApiResponse(responseCode = "401", description = "Token inválido o no autorizado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
-        
-        @ApiResponse(responseCode = "404", description = "Género no encontrado.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Error interno del servidor", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))) })
-    @RequestMapping(value = "/generos",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
-        method = RequestMethod.PUT)
-    ResponseEntity<Genero> generosPut(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody Genero body
 );
 
 }

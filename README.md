@@ -1,3 +1,4 @@
+# GC02-GPS25_Contenido
 # 📖 Microservicio de Gestión de Contenidos - UnderSounds
 
 Bienvenido al repositorio del microservicio encargado de la gestión de contenidos (textos, imágenes, metadatos, etc.) para la página web **UnderSounds**.
@@ -139,3 +140,6 @@ El proyecto sigue una estructura de paquetes estándar para aplicaciones Spring 
 | `model` | Contiene las clases **Model** o DTO (Data Transfer Object). Estas clases se usan a menudo para la **entrada y salida** de datos en los controladores, separando la estructura de la base de datos de la estructura de la API. |
 | `repository` | Incluye las interfaces **Repository** (`JpaRepository`). Son responsables de la comunicación directa con la base de datos (CRUD), sin lógica de negocio. |
 | `services` | Contiene la lógica de **negocio** (`@Service`). Implementa las operaciones complejas y transaccionales, utilizando los *repositories* para la manipulación de datos. |
+
+
+

@@ -18,7 +18,11 @@ import javax.validation.constraints.*;
 @NotUndefined
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-11-10T17:11:09.236506587Z[GMT]")
 
-public class ElementoInput {
+public class ElementoPut {
+
+  @JsonProperty("id")
+  private Integer id = null;
+
   @JsonProperty("nombre")
 
   private String nombre = null;
@@ -26,19 +30,16 @@ public class ElementoInput {
   @JsonProperty("descripcion")
 
   @JsonInclude(JsonInclude.Include.NON_ABSENT) // Exclude from JSON if absent
-  @JsonSetter(nulls = Nulls.FAIL) // FAIL setting if the value is null
   private String descripcion = null;
 
   @JsonProperty("urlFoto")
 
   @JsonInclude(JsonInclude.Include.NON_ABSENT) // Exclude from JSON if absent
-  @JsonSetter(nulls = Nulls.FAIL) // FAIL setting if the value is null
   private String urlFoto = null;
 
   @JsonProperty("precio")
 
   @JsonInclude(JsonInclude.Include.NON_ABSENT) // Exclude from JSON if absent
-  @JsonSetter(nulls = Nulls.FAIL) // FAIL setting if the value is null
   private Float precio = null;
 
   @JsonProperty("esnovedad")
@@ -66,7 +67,30 @@ public class ElementoInput {
   @JsonInclude(JsonInclude.Include.NON_ABSENT) // Exclude from JSON if absent
   private Integer artista = null;
 
-  public ElementoInput nombre(String nombre) {
+  @JsonProperty("numventas")
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT) // Exclude from JSON if absent
+  private Integer numventas = null;
+
+  @JsonProperty("valoracion")
+
+  @JsonInclude(JsonInclude.Include.NON_ABSENT) // Exclude from JSON if absent
+  private Integer valoracion = null;
+
+  /**
+   * Get id
+   * 
+   * @return id
+   **/
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public ElementoPut nombre(String nombre) {
 
     this.nombre = nombre;
     return this;
@@ -90,7 +114,7 @@ public class ElementoInput {
     this.nombre = nombre;
   }
 
-  public ElementoInput descripcion(String descripcion) {
+  public ElementoPut descripcion(String descripcion) {
 
     this.descripcion = descripcion;
     return this;
@@ -112,7 +136,7 @@ public class ElementoInput {
     this.descripcion = descripcion;
   }
 
-  public ElementoInput urlFoto(String urlFoto) {
+  public ElementoPut urlFoto(String urlFoto) {
 
     this.urlFoto = urlFoto;
     return this;
@@ -134,7 +158,7 @@ public class ElementoInput {
     this.urlFoto = urlFoto;
   }
 
-  public ElementoInput precio(Float precio) {
+  public ElementoPut precio(Float precio) {
 
     this.precio = precio;
     return this;
@@ -156,7 +180,7 @@ public class ElementoInput {
     this.precio = precio;
   }
 
-  public ElementoInput esnovedad(Boolean esnovedad) {
+  public ElementoPut esnovedad(Boolean esnovedad) {
 
     this.esnovedad = esnovedad;
     return this;
@@ -178,7 +202,7 @@ public class ElementoInput {
     this.esnovedad = esnovedad;
   }
 
-  public ElementoInput esalbum(Boolean esalbum) {
+  public ElementoPut esalbum(Boolean esalbum) {
 
     this.esalbum = esalbum;
     return this;
@@ -200,7 +224,7 @@ public class ElementoInput {
     this.esalbum = esalbum;
   }
 
-  public ElementoInput genero(Integer genero) {
+  public ElementoPut genero(Integer genero) {
 
     this.genero = genero;
     return this;
@@ -223,7 +247,7 @@ public class ElementoInput {
     this.genero = genero;
   }
 
-  public ElementoInput subgenero(Integer subgenero) {
+  public ElementoPut subgenero(Integer subgenero) {
 
     this.subgenero = subgenero;
     return this;
@@ -246,7 +270,7 @@ public class ElementoInput {
     this.subgenero = subgenero;
   }
 
-  public ElementoInput artista(Integer artista) {
+  public ElementoPut artista(Integer artista) {
 
     this.artista = artista;
     return this;
@@ -269,6 +293,54 @@ public class ElementoInput {
     this.artista = artista;
   }
 
+  public ElementoPut numventas(Integer numventas) {
+
+    this.numventas = numventas;
+    return this;
+  }
+
+  /**
+   * Get numventas
+   * 
+   * @return numventas
+   **/
+
+  @Schema(example = "120", description = "")
+
+  public Integer getNumventas() {
+    return numventas;
+  }
+
+  public void setNumventas(Integer numventas) {
+    this.numventas = numventas;
+  }
+
+  public ElementoPut valoracion(Integer valoracion) {
+
+    this.valoracion = valoracion;
+    return this;
+  }
+
+  /**
+   * Get valoracion
+   * minimum: 0
+   * maximum: 5
+   * 
+   * @return valoracion
+   **/
+
+  @Schema(example = "4", description = "")
+
+  @Min(0)
+  @Max(5)
+  public Integer getValoracion() {
+    return valoracion;
+  }
+
+  public void setValoracion(Integer valoracion) {
+    this.valoracion = valoracion;
+  }
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -277,7 +349,7 @@ public class ElementoInput {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ElementoInput elementoInput = (ElementoInput) o;
+    ElementoPut elementoInput = (ElementoPut) o;
     return Objects.equals(this.nombre, elementoInput.nombre) &&
         Objects.equals(this.descripcion, elementoInput.descripcion) &&
         Objects.equals(this.urlFoto, elementoInput.urlFoto) &&

@@ -2,13 +2,9 @@ package io.swagger.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.model.Genero;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
-import org.openapitools.jackson.nullable.JsonNullable;
 import io.swagger.configuration.NotUndefined;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -21,7 +17,7 @@ import javax.validation.constraints.*;
  */
 @Validated
 @NotUndefined
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-11-10T17:11:09.236506587Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-10-27T17:33:52.662194674Z[GMT]")
 
 
 public class Contenido   {
@@ -70,20 +66,19 @@ public class Contenido   {
   private Genero genero = null;
 
   @JsonProperty("subgenero")
-
   @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
   @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
   private Genero subgenero = null;
 
-  @JsonProperty("nombreFoto")
+  @JsonProperty("fotoamazon")
 
   @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
   @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
-  private String nombreFoto = null;
+  private String fotoamazon = null;
 
   @JsonProperty("tipo")
 
-  private BigDecimal tipo = null;
+  private Integer tipo = null;
 
 
   public Contenido id(Integer id) { 
@@ -307,54 +302,30 @@ public class Contenido   {
     this.genero = genero;
   }
 
-  public Contenido subgenero(Genero subgenero) { 
+  public Contenido fotoamazon(String fotoamazon) { 
 
-    this.subgenero = subgenero;
+    this.fotoamazon = fotoamazon;
     return this;
   }
 
   /**
-   * Get subgenero
-   * @return subgenero
+   * Nombre de la foto almacenada en Amazon.
+   * @return fotoamazon
    **/
   
-  @Schema(description = "")
+  @Schema(example = "foto123.jpg", description = "Nombre de la foto almacenada en Amazon.")
   
-@Valid
-  public Genero getSubgenero() {  
-    return subgenero;
+  public String getFotoamazon() {  
+    return fotoamazon;
   }
 
 
 
-  public void setSubgenero(Genero subgenero) { 
-    this.subgenero = subgenero;
+  public void setFotoamazon(String fotoamazon) { 
+    this.fotoamazon = fotoamazon;
   }
 
-  public Contenido nombreFoto(String nombreFoto) { 
-
-    this.nombreFoto = nombreFoto;
-    return this;
-  }
-
-  /**
-   * Nombre de la foto almacenada en la nube.
-   * @return nombreFoto
-   **/
-  
-  @Schema(example = "foto123.jpg", description = "Nombre de la foto almacenada en la nube.")
-  
-  public String getNombreFoto() {  
-    return nombreFoto;
-  }
-
-
-
-  public void setNombreFoto(String nombreFoto) { 
-    this.nombreFoto = nombreFoto;
-  }
-
-  public Contenido tipo(BigDecimal tipo) { 
+  public Contenido tipo(Integer tipo) { 
 
     this.tipo = tipo;
     return this;
@@ -369,13 +340,13 @@ public class Contenido   {
   
 @Valid
   @NotNull
-  public BigDecimal getTipo() {  
+  public Integer getTipo() {  
     return tipo;
   }
 
 
 
-  public void setTipo(BigDecimal tipo) { 
+  public void setTipo(Integer tipo) { 
 
     this.tipo = tipo;
   }
@@ -398,14 +369,13 @@ public class Contenido   {
         Objects.equals(this.precio, contenido.precio) &&
         Objects.equals(this.esnovedad, contenido.esnovedad) &&
         Objects.equals(this.genero, contenido.genero) &&
-        Objects.equals(this.subgenero, contenido.subgenero) &&
-        Objects.equals(this.nombreFoto, contenido.nombreFoto) &&
+        Objects.equals(this.fotoamazon, contenido.fotoamazon) &&
         Objects.equals(this.tipo, contenido.tipo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, nombre, fechacrea, descripcion, numventas, valoracion, precio, esnovedad, genero, subgenero, nombreFoto, tipo);
+    return Objects.hash(id, nombre, fechacrea, descripcion, numventas, valoracion, precio, esnovedad, genero, fotoamazon, tipo);
   }
 
   @Override
@@ -422,8 +392,7 @@ public class Contenido   {
     sb.append("    precio: ").append(toIndentedString(precio)).append("\n");
     sb.append("    esnovedad: ").append(toIndentedString(esnovedad)).append("\n");
     sb.append("    genero: ").append(toIndentedString(genero)).append("\n");
-    sb.append("    subgenero: ").append(toIndentedString(subgenero)).append("\n");
-    sb.append("    nombreFoto: ").append(toIndentedString(nombreFoto)).append("\n");
+    sb.append("    fotoamazon: ").append(toIndentedString(fotoamazon)).append("\n");
     sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -438,5 +407,20 @@ public class Contenido   {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
+  }
+
+  public Integer getSubgeneroId() {
+    if (subgenero != null) {
+        return subgenero.getId();
+    }
+    return null;
+  }
+
+  public Genero getSubgenero() {
+    return this.subgenero;
+  }
+    
+  public void setSubgenero(Genero subgenero) {
+    this.subgenero = subgenero;
   }
 }

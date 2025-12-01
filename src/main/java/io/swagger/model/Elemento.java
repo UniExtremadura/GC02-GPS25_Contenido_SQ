@@ -2,13 +2,9 @@ package io.swagger.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.model.Artista;
-import io.swagger.model.Genero;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.threeten.bp.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
-import org.openapitools.jackson.nullable.JsonNullable;
 import io.swagger.configuration.NotUndefined;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -21,7 +17,7 @@ import javax.validation.constraints.*;
  */
 @Validated
 @NotUndefined
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-11-10T17:11:09.236506587Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2025-10-27T17:33:52.662194674Z[GMT]")
 
 
 public class Elemento   {
@@ -88,7 +84,6 @@ public class Elemento   {
   private Genero genero = null;
 
   @JsonProperty("subgenero")
-
   @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
   @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
   private Genero subgenero = null;
@@ -118,8 +113,6 @@ public class Elemento   {
     return id;
   }
 
-
-
   public void setId(Integer id) { 
 
     this.id = id;
@@ -142,8 +135,6 @@ public class Elemento   {
   public String getNombre() {  
     return nombre;
   }
-
-
 
   public void setNombre(String nombre) { 
 
@@ -168,8 +159,6 @@ public class Elemento   {
     return fechacrea;
   }
 
-
-
   public void setFechacrea(OffsetDateTime fechacrea) { 
     this.fechacrea = fechacrea;
   }
@@ -190,8 +179,6 @@ public class Elemento   {
   public String getDescripcion() {  
     return descripcion;
   }
-
-
 
   public void setDescripcion(String descripcion) { 
     this.descripcion = descripcion;
@@ -214,8 +201,6 @@ public class Elemento   {
     return urlFoto;
   }
 
-
-
   public void setUrlFoto(String urlFoto) { 
     this.urlFoto = urlFoto;
   }
@@ -236,8 +221,6 @@ public class Elemento   {
   public Integer getNumventas() {  
     return numventas;
   }
-
-
 
   public void setNumventas(Integer numventas) { 
     this.numventas = numventas;
@@ -262,8 +245,6 @@ public class Elemento   {
     return valoracion;
   }
 
-
-
   public void setValoracion(Integer valoracion) { 
     this.valoracion = valoracion;
   }
@@ -284,8 +265,6 @@ public class Elemento   {
   public Float getPrecio() {  
     return precio;
   }
-
-
 
   public void setPrecio(Float precio) { 
     this.precio = precio;
@@ -308,8 +287,6 @@ public class Elemento   {
     return esnovedad;
   }
 
-
-
   public void setEsnovedad(Boolean esnovedad) { 
     this.esnovedad = esnovedad;
   }
@@ -330,8 +307,6 @@ public class Elemento   {
   public Boolean isEsalbum() {  
     return esalbum;
   }
-
-
 
   public void setEsalbum(Boolean esalbum) { 
     this.esalbum = esalbum;
@@ -355,34 +330,8 @@ public class Elemento   {
     return genero;
   }
 
-
-
   public void setGenero(Genero genero) { 
     this.genero = genero;
-  }
-
-  public Elemento subgenero(Genero subgenero) { 
-
-    this.subgenero = subgenero;
-    return this;
-  }
-
-  /**
-   * Get subgenero
-   * @return subgenero
-   **/
-  
-  @Schema(description = "")
-  
-@Valid
-  public Genero getSubgenero() {  
-    return subgenero;
-  }
-
-
-
-  public void setSubgenero(Genero subgenero) { 
-    this.subgenero = subgenero;
   }
 
   public Elemento artista(Artista artista) { 
@@ -402,8 +351,6 @@ public class Elemento   {
   public Artista getArtista() {  
     return artista;
   }
-
-
 
   public void setArtista(Artista artista) { 
     this.artista = artista;
@@ -429,13 +376,12 @@ public class Elemento   {
         Objects.equals(this.esnovedad, elemento.esnovedad) &&
         Objects.equals(this.esalbum, elemento.esalbum) &&
         Objects.equals(this.genero, elemento.genero) &&
-        Objects.equals(this.subgenero, elemento.subgenero) &&
         Objects.equals(this.artista, elemento.artista);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, nombre, fechacrea, descripcion, urlFoto, numventas, valoracion, precio, esnovedad, esalbum, genero, subgenero, artista);
+    return Objects.hash(id, nombre, fechacrea, descripcion, urlFoto, numventas, valoracion, precio, esnovedad, esalbum, genero, artista);
   }
 
   @Override
@@ -454,7 +400,6 @@ public class Elemento   {
     sb.append("    esnovedad: ").append(toIndentedString(esnovedad)).append("\n");
     sb.append("    esalbum: ").append(toIndentedString(esalbum)).append("\n");
     sb.append("    genero: ").append(toIndentedString(genero)).append("\n");
-    sb.append("    subgenero: ").append(toIndentedString(subgenero)).append("\n");
     sb.append("    artista: ").append(toIndentedString(artista)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -469,5 +414,13 @@ public class Elemento   {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
+  }
+
+  public Genero getSubgenero() {
+    return this.subgenero;
+  }
+
+  public void setSubgenero(Genero id2) {
+    this.subgenero = id2;
   }
 }

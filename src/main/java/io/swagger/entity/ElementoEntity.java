@@ -2,8 +2,6 @@ package io.swagger.entity;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.ForeignKey;
-
 import java.time.LocalDateTime;
 
 /**
@@ -96,7 +94,7 @@ public class ElementoEntity {
     public Integer getArtista() { return artista; }
     public void setArtista(Integer artista) { this.artista = artista; }
 
-    public Integer getSubgenero() {
-        return this.subgenero;
-    }
+    public Integer getSubgenero() {return this.subgenero;}
+
+    public void setSubgenero(Integer id2) {this.subgenero = id2;}
 }

@@ -1,5 +1,4 @@
 io\swagger\entity\ElementoEntity.class
-io\swagger\configuration\HomeController.class
 io\swagger\api\ContenidosApi.class
 io\swagger\configuration\JacksonConfiguration.class
 io\swagger\api\ApiResponseMessage.class
@@ -15,6 +14,7 @@ io\swagger\services\ElementoService.class
 io\swagger\api\CancionesApi.class
 io\swagger\configuration\LocalDateConverter.class
 io\swagger\Swagger2SpringBoot$ExitException.class
+io\swagger\model\ElementoPut.class
 io\swagger\configuration\CustomInstantDeserializer$9.class
 io\swagger\services\GeneroService.class
 io\swagger\model\ElementoInput.class
@@ -28,6 +28,7 @@ io\swagger\api\NotFoundException.class
 io\swagger\configuration\CustomInstantDeserializer$5.class
 io\swagger\configuration\CustomInstantDeserializer$FromIntegerArguments.class
 io\swagger\api\ApiException.class
+io\swagger\model\CancionPut.class
 io\swagger\repository\GeneroRepository.class
 io\swagger\configuration\CustomInstantDeserializer$2.class
 io\swagger\model\Contenido.class
