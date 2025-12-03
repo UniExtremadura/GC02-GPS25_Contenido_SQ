@@ -5,7 +5,7 @@ Bienvenido al repositorio del microservicio encargado de la gestión de contenid
 
 Este microservicio está construido con **Spring Boot**, utiliza **Maven** para la gestión de dependencias y **Oracle Database** como sistema de persistencia.
 
-## 🛠️ Requisitos Previos
+## 🛠️ Requisitos Previos     
 
 Asegúrate de tener instaladas las siguientes herramientas en tu entorno de desarrollo:
 
